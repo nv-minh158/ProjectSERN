@@ -11,6 +11,10 @@ const Header = () => {
   const goLogin = useCallback(() => {
     navigate(path.LOGIN);
   }, []);
+
+  const goRegister = useCallback(() => {
+    navigate(path.REGISTER);
+  }, []);
   return (
     <div className="w-full">
       <div className="flex items-center justify-around w-full">
@@ -31,7 +35,7 @@ const Header = () => {
             text="Đăng Ký"
             textColor="text-white"
             bgColor="!bg-[#3961fb]"
-            onClick={goLogin}
+            onClick={goRegister}
           />
           <Button
             text="Đăng Tin Mới"
