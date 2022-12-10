@@ -108,7 +108,7 @@ const scraper = async (browser, url) =>
               };
             }
           );
-          console.log(header);
+          detailData.header = header;
         } catch (error) {
           console.log("crawl data detail error: " + error);
         }
