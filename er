@@ -1,0 +1,35 @@
+[33mcommit b276f1754aaff2bada029c1702c40b2101e2ae49[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: minhnv <minhsadz@gmail.com>
+Date:   Sat Dec 10 14:52:26 2022 +0700
+
+    init crawl data
+
+[33mcommit 74df748d5cd1f547772a2f881ca679e0edfc4702[m
+Author: minhnv <minhsadz@gmail.com>
+Date:   Thu Dec 8 14:42:53 2022 +0700
+
+    implement UI for header and login
+
+[33mcommit b6c887dced180e2c7737f8ea75e79119efcca40a[m
+Author: minhnv <minhsadz@gmail.com>
+Date:   Tue Dec 6 22:58:21 2022 +0700
+
+    fix tailwindcss dont apply
+
+[33mcommit 78886dd1fd9125d0671a4c0618180d5906734791[m
+Author: minhnv <minhsadz@gmail.com>
+Date:   Sun Dec 4 18:16:59 2022 +0700
+
+    init base project
+
+[33mcommit a90ccf4e6e760d14fb935d235d07233435fb127a[m
+Author: minhnv <minhsadz@gmail.com>
+Date:   Sun Dec 4 17:41:18 2022 +0700
+
+    init base project
+
+[33mcommit 0c06430c40081e4edf406dc861d3187c0645fb66[m
+Author: minhnv <minhsadz@gmail.com>
+Date:   Sun Dec 4 17:37:44 2022 +0700
+
+    init base project
