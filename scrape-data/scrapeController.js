@@ -1,5 +1,5 @@
 const scrapers = require("./scraper");
-
+const fs = require("fs");
 const scrapeController = async (browserInstance) => {
   const url = "https://phongtro123.com/";
   const indexs = [1, 2, 3, 4];
@@ -9,7 +9,15 @@ const scrapeController = async (browserInstance) => {
     const selectedCategories = categories.filter((category, index) =>
       indexs.some((i) => i === index)
     );
-    await scrapers.scraper(browser, selectedCategories[0].link);
+    let result = await scrapers.scraper(browser, selectedCategories[0].link);
+    await fs.writeFile(
+      "chothuephongtro.json",
+      JSON.stringify(result),
+      (error) => {
+        if (error) console.log("error: " + error);
+        console.log("successfully!!");
+      }
+    );
   } catch (error) {
     console.log("error in scrape controller:", error);
   }
