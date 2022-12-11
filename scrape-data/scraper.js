@@ -81,19 +81,19 @@ const scraper = async (browser, url) =>
             //
             //     // crawls header detail
             const header = await pageDetail.$eval(
-              "#left-col > article > header",
+              "header.page-header",
               (el) => {
                 return {
                   title: el.querySelector("h1 > a").innerText,
                   star: el
                     .querySelector("h1 > span")
-                    .className.replace(/^\D+/g, ""),
+                    ?.className?.replace(/^\D+/g, ""),
                   class: {
                     content: el.querySelector("p").innerText,
                     classType: el.querySelector("p > a > strong").innerText,
                   },
                   address: el.querySelector("address").innerText,
-                  attribute: {
+                  attributes: {
                     price: el.querySelector(
                       "div.post-attributes > .price > span"
                     ).innerText,
@@ -171,6 +171,7 @@ const scraper = async (browser, url) =>
           }
         });
       const details = [];
+
       for (let link of detailLinks) {
         const detail = await scraperDetail(link);
         details.push(detail);
