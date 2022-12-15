@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "../../components";
 import InputForm from "../../components/InputForm";
+import { NavLink } from "react-router-dom";
+import { path } from "../../ultils/constant";
 
 const Login = () => {
   return (
@@ -21,9 +23,11 @@ const Login = () => {
         <small className="text-[blue] hover:text-[red] cursor-pointer">
           Bạn Quên Mật Khẩu
         </small>
-        <small className="text-[blue] hover:text-[red] cursor-pointer">
-          Tạo Tài Khoản Mới
-        </small>
+        <NavLink to={path.REGISTER}>
+          <small className="text-[blue] hover:text-[red] cursor-pointer">
+            Tạo Tài Khoản Mới
+          </small>
+        </NavLink>
       </div>
     </div>
   );

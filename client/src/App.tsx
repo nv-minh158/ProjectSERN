@@ -5,7 +5,6 @@ import Home from "./containers/Public/Home";
 import Login from "./containers/Public/Login";
 import { Route, Routes } from "react-router-dom";
 import { Register } from "./containers/Public";
-
 function App() {
   return (
     <div className="w-screen h-screen bg-primary">

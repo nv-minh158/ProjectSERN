@@ -4,45 +4,48 @@ import logo from "../../assets/logowithoutbg.png";
 import { Button } from "../../components";
 import icons from "../../ultils/icons";
 import { path } from "../../ultils/constant";
+import { Link } from "react-router-dom";
 
 const { FaPlusCircle } = icons;
 const Header = () => {
   const navigate = useNavigate();
-  const goLogin = useCallback(() => {
-    navigate(path.LOGIN);
+  const goLogin = useCallback((flag: string) => {
+    navigate(path.LOGIN, { state: { flag } });
   }, []);
 
-  const goRegister = useCallback(() => {
-    navigate(path.REGISTER);
+  const goRegister = useCallback((flag: string) => {
+    navigate(path.REGISTER, { state: { flag } });
   }, []);
   return (
     <div className="w-full">
       <div className="flex items-center justify-around w-full">
-        <img
-          src={logo}
-          alt="logo"
-          className="w-[240px] h-[70px] object-contain"
-        />
+        <Link to={path.HOME}>
+          <img
+            src={logo}
+            alt="logo"
+            className="w-[240px] h-[70px] object-contain"
+          />
+        </Link>
         <div className="flex gap-1">
           <small>Phongtro123.com xin chào!</small>
           <Button
             text="Đăng Nhập"
             textColor="text-white"
             bgColor="!bg-[#3961fb]"
-            onClick={goLogin}
+            onClick={() => goLogin("login")}
           />
           <Button
             text="Đăng Ký"
             textColor="text-white"
             bgColor="!bg-[#3961fb]"
-            onClick={goRegister}
+            onClick={() => goRegister("register")}
           />
           <Button
             text="Đăng Tin Mới"
             textColor="text-white"
             bgColor="!bg-secondary2"
             IcAfter={FaPlusCircle}
-            onClick={goLogin}
+            // onClick={goLogin}
           />
         </div>
       </div>
