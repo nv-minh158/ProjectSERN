@@ -1,3 +1,5 @@
 export interface IUser {
-  currentData: object;
+  userName?: string;
+  phone: string;
+  password: string;
 }

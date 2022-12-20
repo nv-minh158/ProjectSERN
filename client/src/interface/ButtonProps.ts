@@ -1,3 +1,4 @@
+import { ChangeEvent, MouseEventHandler } from "react";
 import { IconType } from "react-icons/lib";
 
 export interface IButtonProps {

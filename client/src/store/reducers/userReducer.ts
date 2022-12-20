@@ -1,7 +1,9 @@
 import { IUser } from "../../interface/User";
 
 const initState: IUser = {
-  currentData: {},
+  userName: "",
+  phone: "",
+  password: "",
 };
 
 const userReducer = (state: IUser = initState, action: any) => {
