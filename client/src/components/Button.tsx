@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import { IButtonProps } from "../interface/ButtonProps";
+import React, { memo } from 'react';
+import { IButtonProps } from '../interface/ButtonProps';
 
 const Button = ({
   text,
@@ -8,18 +8,16 @@ const Button = ({
   IcAfter,
   onClick,
   fullWidth,
-}: IButtonProps) => {
-  return (
+}: IButtonProps) => (
     <button
       type="button"
-      className={`py-2 px-4 ${textColor} ${bgColor} ${fullWidth && "w-full"}
+      className={`py-2 px-4 ${textColor} ${bgColor} ${fullWidth && 'w-full'}
       } outline-none rounded-md hover:underline flex items-center justify-center gap-1`}
       onClick={onClick}
     >
       {text}
-      {IcAfter && <IcAfter />}
+      {(IcAfter != null) && <IcAfter />}
     </button>
-  );
-};
+);
 
 export default memo(Button);

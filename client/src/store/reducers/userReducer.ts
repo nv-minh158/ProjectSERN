@@ -1,9 +1,9 @@
-import { IUser } from "../../interface/User";
+import { IUser } from '../../interface/User';
 
 const initState: IUser = {
-  userName: "",
-  phone: "",
-  password: "",
+  userName: '',
+  phone: '',
+  password: '',
 };
 
 const userReducer = (state: IUser = initState, action: any) => {

@@ -1,11 +1,11 @@
-import axiosConfig from "../axiosConfig";
-import { IUser } from "../interface/User";
+import axiosConfig from '../axiosConfig';
+import { IUser } from '../interface/User';
 
 export const apiRegister = async (payload: IUser) => {
   try {
     const response = await axiosConfig({
-      method: "post",
-      url: "/api/v1/auth/register",
+      method: 'post',
+      url: '/api/v1/auth/register',
       data: payload,
     });
     return response;
@@ -17,8 +17,8 @@ export const apiRegister = async (payload: IUser) => {
 export const apiLogin = async (payload: IUser) => {
   try {
     const response = await axiosConfig({
-      method: "post",
-      url: "/api/v1/auth/login",
+      method: 'post',
+      url: '/api/v1/auth/login',
       data: payload,
     });
     return response;

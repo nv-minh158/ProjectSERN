@@ -1,4 +1,5 @@
-import { IAuth } from "../../interface/Auth";
+import { IAuth } from '../../interface/Auth';
+
 const initState: IAuth = {
   isLoggedIn: false,
   token: null,

@@ -1,4 +1,4 @@
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle } from 'react-icons/fa';
 
 const icons = {
   FaPlusCircle,
