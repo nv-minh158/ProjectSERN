@@ -1,9 +1,13 @@
-import React, { ChangeEvent, MouseEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../../components';
 import InputForm from '../../components/InputForm';
-import { path } from '../../ultils/constant';
-import { apiLogin, apiRegister } from '../../services/auth';
+import path from '../../ultils/constant';
+import { apiLogin } from '../../services/auth';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../store/actions';
+import { useNavigate } from 'react-router';
+import { IUser } from './../../interface/User';
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
@@ -11,17 +15,68 @@ const Login = () => {
     phone: '',
     password: '',
   });
-  // const onChangeLoginForm = (event: ChangeEvent<HTMLInputElement>) => {
-  //   return setLoginForm({
-  //     ...loginForm,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
+  const [invalidFields, setInvalidFields] = useState<Array<Object>>([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const validate = (loginForm: IUser) => {
+    let invalid = 0;
+    let fields = Object.entries(loginForm);
+    fields.slice(1).forEach((field) => {
+      if (field[1] === '')
+        setInvalidFields((previous) => [
+          ...previous,
+          {
+            name: field[0],
+            message: 'Bạn không được bỏ trống trường này!',
+          },
+        ]);
+      console.log(invalidFields);
+      invalid++;
+    });
+    fields.slice(1).forEach((field) => {
+      switch (field[0]) {
+        case 'password':
+          if (field[1].length < 6) {
+            setInvalidFields((previous) => [
+              ...previous,
+              {
+                name: field[0],
+                message: 'Mật khẩu phải có tối thiểu 6 kí tự!',
+              },
+            ]);
+            console.log(invalidFields);
+            invalid++;
+          }
+          break;
+        case 'phone':
+          if (!+field[1]) {
+            setInvalidFields((previous) => [
+              ...previous,
+              {
+                name: field[0],
+                message: 'Số điện thoại không hợp lệ!',
+              },
+            ]);
+            invalid++;
+          }
+      }
+    });
+
+    return invalid;
+  };
   const handleClickButton = async () => {
     try {
-      const loginData = await apiLogin(loginForm);
-      console.log('🚀 ~ file: Login.tsx:24 ~ handleClickButton ~ loginData', loginData);
-      setLoginForm({ userName: '', phone: '', password: '' });
+      let invalids = await validate(loginForm);
+      console.log('🚀 ~ file: Login.tsx:67 ~ handleClickButton ~ invalids', invalids);
+      console.log('🚀 ~ file: Login.tsx:19 ~ Login ~ invalidFields', invalidFields);
+
+      // const loginData = await apiLogin(loginForm);
+      // dispatch(actions.login(loginForm) as unknown as any);
+      // if (loginData?.data.success === true) {
+      //   alert('Chúc mừng bạn đã đăng nhập thành công');
+      //   navigate('/');
+      //   setLoginForm({ userName: '', phone: '', password: '' });
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -37,6 +92,7 @@ const Login = () => {
           value={loginForm.phone}
           type={'phone'}
           setValue={setLoginForm}
+          invalidFields={invalidFields}
         />
         <InputForm
           label={'Mật Khẩu'}
@@ -44,6 +100,7 @@ const Login = () => {
           type={'password'}
           value={loginForm.password}
           setValue={setLoginForm}
+          invalidFields={invalidFields}
         />
         <Button
           text="Đăng Nhập"

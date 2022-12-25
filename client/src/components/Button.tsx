@@ -8,7 +8,8 @@ const Button = ({
   IcAfter,
   onClick,
   fullWidth,
-}: IButtonProps) => (
+}: IButtonProps) => {
+  return (
     <button
       type="button"
       className={`py-2 px-4 ${textColor} ${bgColor} ${fullWidth && 'w-full'}
@@ -16,8 +17,9 @@ const Button = ({
       onClick={onClick}
     >
       {text}
-      {(IcAfter != null) && <IcAfter />}
+      {IcAfter != null && <IcAfter />}
     </button>
-);
+  );
+};
 
 export default memo(Button);

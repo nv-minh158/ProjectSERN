@@ -13,7 +13,6 @@
     "@types/react-redux": "^7.1.24",
     "@types/redux-persist": "^4.3.1",
     "axios": "^1.2.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
     "path-browserify": "^1.0.1",
     "postcss-cli": "^10.1.0",
     "react": "^18.2.0",
@@ -57,16 +56,15 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.47.0",
     "assert": "^2.0.0",
     "autoprefixer": "^9.8.8",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
     "eslint": "^8.30.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-standard-with-typescript": "^24.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.11",
     "https-browserify": "^1.0.0",
@@ -86,5 +84,6 @@
     "fs": false,
     "path": false,
     "os": false
-  }
+  },
+  "license": "MIT"
 }

@@ -6,15 +6,15 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('persist:auth');
-    console.log(token);
+    const accessToken = localStorage.getItem('persist:auth');
+
     // Do something before request is sent
     return config;
   },
   async (error) => {
     // Do something with request error
     console.log(error);
-    return Promise.reject(error);
+    return await Promise.reject(error);
   },
 );
 export default instance;

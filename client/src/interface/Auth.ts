@@ -1,8 +1,8 @@
 import actionType from '../store/actions/actionType';
 
 export interface IAuth {
-  isLoggedIn: boolean
-  token: string | null
+  isLoggedIn: boolean;
+  accessToken: string | null;
 }
 
 // const { LOGIN, REGISTER, LOGOUT } = actionType;

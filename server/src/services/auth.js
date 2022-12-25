@@ -28,18 +28,23 @@ const registerService = async ({ userName, phone, password, res }) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "2d" }
       );
-
-    res.json({
-      success: true,
-      message: "User created successfully",
-      accessToken,
-    });
+    if (accessToken) {
+      return {
+        success: true,
+        message: "User created successfully",
+        accessToken,
+      };
+    }
+    return {
+      success: false,
+      message: "User has already ",
+    };
   } catch (error) {
     console.error(error);
   }
 };
 
-const loginService = async ({ phone, password, res }) => {
+const loginService = async ({ phone, password }) => {
   try {
     const response = await db.User.findOne({
       where: { phone },
@@ -54,11 +59,18 @@ const loginService = async ({ phone, password, res }) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "2d" }
       );
-    res.json({
-      success: true,
-      message: "User logged in successfully",
-      accessToken,
-    });
+
+    if (accessToken) {
+      return {
+        success: true,
+        message: "User logged in successfully",
+        accessToken,
+      };
+    }
+    return {
+      success: false,
+      message: "Phone number or password incorrect",
+    };
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, message: "Internal server error" });

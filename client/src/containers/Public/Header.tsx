@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logowithoutbg.png';
 import { Button } from '../../components';
 import icons from '../../ultils/icons';
-import { path } from '../../ultils/constant';
+import path from '../../ultils/constant';
 
 const { FaPlusCircle } = icons;
 const Header = () => {

@@ -19,14 +19,14 @@ const login = async (req, res) => {
     if (!phone || !password)
       return res.status(400).json({
         err: 1,
-        msg: "Missing inputs !",
+        message: "Missing inputs !",
       });
-    const response = await loginService({ phone, password, res });
+    const response = await loginService({ phone, password });
     return res.status(200).json(response);
   } catch (error) {
     return res.status(500).json({
       err: -1,
-      msg: "Fail at auth controller: " + error,
+      message: "Fail at auth controller: " + error,
     });
   }
 };

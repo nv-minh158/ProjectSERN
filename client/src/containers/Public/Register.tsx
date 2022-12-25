@@ -3,18 +3,27 @@ import { NavLink } from 'react-router-dom';
 import { Button, InputForm } from '../../components';
 import path from '../../ultils/constant';
 import { apiRegister } from '../../services/auth';
-
+import { useDispatch } from 'react-redux';
+import * as actions from '../../store/actions';
+import { useNavigate } from 'react-router';
+import { IUser } from '../../interface/User';
 const Register = () => {
-  const [registerForm, setRegisterForm] = useState({
+  const [registerForm, setRegisterForm] = useState<IUser>({
     userName: '',
     phone: '',
     password: '',
   });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleClickButton = async () => {
     try {
-      const loginData = await apiRegister(registerForm);
-      console.log('🚀 ~ file: Login.tsx:24 ~ handleClickButton ~ loginData', loginData);
-      setRegisterForm({ userName: '', phone: '', password: '' });
+      const registerData = await apiRegister(registerForm);
+      dispatch(actions.register(registerForm) as unknown as any);
+      if (registerData?.data.success === true) {
+        setRegisterForm({ userName: '', phone: '', password: '' });
+        alert('Chúc mừng bạn đã đăng ký thành công');
+        navigate('/login');
+      }
     } catch (error) {
       console.log(error);
     }
@@ -22,7 +31,7 @@ const Register = () => {
   return (
     <div className="bg-white w-[600px] max-w-600 p-[30px] pb-[100px] rounded-md shadow-sm">
       <h3 className="mb-3 text-2xl font-semibold">Đăng Ký Tài Khoản</h3>
-      <div className="flex flex-col w-full gap-5">
+      {/* <div className="flex flex-col w-full gap-5">
         <InputForm
           label={'Họ tên'}
           typeInput={'text'}
@@ -62,7 +71,7 @@ const Register = () => {
             <p className="text-[blue] ml-1"> Đăng nhập ngay</p>
           </NavLink>
         </small>
-      </div>
+      </div> */}
     </div>
   );
 };
